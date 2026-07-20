@@ -1,0 +1,19 @@
+.post-content .katex-display,
+.post-content mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+.ggb-wrap {
+  margin: 1.5rem 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ggb-frame {
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--entry);
+}
