@@ -1,0 +1,137 @@
+---
+title: "GeoGebra 演示"
+date: 2026-07-19
+draft: false
+math: true
+tags: ["几何", "GeoGebra", "勾股定理"]
+---
+这是一篇示例文章，用来测试 GeoGebra 嵌入。
+
+
+把这个本地的 “勾股定理.ggb” 嵌入到 Hugo 博客里，有两条完整的可执行方案：
+
+插入网上的GGB文件，和插入本地的的GGB文件。
+
+**📦 方案一：最省事（推荐）→ 上传到 GeoGebra 在线库 + 嵌入  测试成功！！！**
+
+这是最稳定的方式。
+
+1.在线保存你的作品
+点击「文件」→「在线保存」，用你的 GeoGebra 账号登录并保存 “勾股定理.ggb”，设置为「公开」。
+
+2.获取嵌入代码
+
+保存成功后，会跳转到作品的在线页面。点击右上角「分享」→「嵌入」，就能得到标准的 iframe 代码，类似：
+```
+<iframe src="https://www.geogebra.org/classic/你的作品ID?embed" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+本例中 `id` 为`wbhb7sdm`
+```
+3.嵌入到 Hugo 文章
+
+从代码中获得 id ，只需要替换GeoGebra官方网站在线动画文件的 id 即可：
+
+【把本行中2对中括号改为大括号】    [[< geogebra id="wbhb7sdm" width="100%" height="520" >]]
+
+下面是演示效果
+
+{{< geogebra id="wbhb7sdm" width="100%" height="520" >}}
+
+直接把这段代码粘贴到你的 Markdown 文章里即可。
+
+**这种方式插入不会显示工具栏，无法拖动画布。**
+
+优点：稳定省心，GeoGebra 官方托管，不会有跨域和加载问题。
+
+缺点：需要注册 GeoGebra 账号，且作品必须公开。
+
+~~**📦 方案二：本地导出 + 自托管（不依赖 GeoGebra 账号）**~~
+
+如果你不想上传到 GeoGebra 官网，可以直接从当前界面导出并嵌入。
+
+1.导出为网页文件
+
+点击「文件」→「导出」→「网页 (html)...」，保存为 gougu_dinli.html。
+
+2.放到博客静态目录
+
+把导出的 gougu_dinli.html 放到你 Hugo 博客的静态文件目录里：
+
+D:=SYSFLODERS=\Desktop\xucg.github.io\static\ggb\gougu_dinli.html
+（如果没有 static/ggb 文件夹，手动新建即可）
+
+~~3.在文章中嵌入    测试失败，不愿研究了！！！~~
+
+~~在你的 Markdown 文章里，用 iframe 引用这个本地文件：~~
+```
+<iframe src="/ggb/gougu_dinli.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+```
+<iframe src="/ggb/gougu_dinli.html" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+
+优点：完全本地控制，不需要上传第三方平台。
+
+缺点：需要在 Hugo 里处理好静态文件路径，本地预览和线上部署时路径要一致。
+
+💡 关键注意事项
+
+路径问题：自托管方案中，src="/ggb/gougu_dinli.html" 前面的 / 代表从网站根目录开始，确保和你 Hugo 的静态文件目录结构一致。
+
+预览验证：修改后，一定要在本地运行 hugo server 打开文章，检查 GGB 演示是否能正常加载、交互。
+
+主题兼容：PaperMod 完全支持 iframe 嵌入，无需额外配置，直接粘贴即可生效。
+
+**📦 方案三：本地导出 + 自托管（不依赖 GeoGebra 账号）+短代码  测试成功！！！**
+
+1.创建短代码文件（一次性创建即可，以后所有 GGB 都能用）
+
+在你的博客根目录下，新建文件 layouts/shortcodes/ggb.html（如果文件夹不存在就手动创建）：
+
+<iframe 
+    src="{{ .Get "src" }}"
+    width="100%"
+    height="{{ .Get "height" | default "550" }}"
+    frameborder="0"
+    allowfullscreen
+    sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+</iframe>
+
+调用示例
+
+<!-- 使用默认高度 550 -->
+【把本行中2对中括号改为大括号】     [[< ggb src="/ggb/yuanzhuzhankai.html?embed" >]]      
+
+<!-- 单独设置高度 700 -->
+【把本行中2对中括号改为大括号】     [[< ggb src="/ggb/yuanzhuzhankai.html?embed" height="700" >]]
+
+2.修改你的 Markdown 文章
+
+把原来的 iframe 代码，换成调用短代码的方式：
+
+我们来发布本地的“圆柱展开的GGB”
+
+<!-- 使用默认高度 550 -->
+【把本行中2对中括号改为大括号】     [[< ggb src="/ggb/yuanzhuzhankai.html?embed" >]]
+
+<!-- 单独设置高度 300 -->
+【把本行中2对中括号改为大括号】     [[< ggb src="/ggb/yuanzhuzhankai.html?embed" height="300" >]]
+
+下面是显示效果：
+
+<!-- 使用默认高度 550 -->
+-- 使用默认高度 550 --
+
+{{< ggb src="/ggb/yuanzhuzhankai.html?embed" >}}
+
+<!-- 单独设置高度 300 -->
+-- 使用默认高度 550 --
+
+{{< ggb src="/ggb/yuanzhuzhankai.html?embed" height="300" >}}
+
+**这种方式插入会显示工具栏，可以拖动画布。**
+
+3.重启 Hugo 服务
+
+cd /d D:=SYSFLODERS=\Desktop\xucg.github.io
+
+hugo server -D --gc
+
+刷新文章页面，现在短代码会直接渲染 iframe，不会被主题过滤。

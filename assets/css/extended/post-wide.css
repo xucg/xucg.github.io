@@ -1,0 +1,16 @@
+/* 文章页加宽：通过覆盖 PaperMod 的 CSS 变量一次性生效 */
+/* 限定为单文章页，不影响首页 / 归档 / 标签等列表页 */
+:root:has(.post-single) {
+  --main-width: 1080px;
+  --nav-width: 1080px;
+}
+
+/* 文章内容区两端留一点呼吸空间，避免贴边 */
+.post-single .post-content {
+  padding-inline: 0.5rem;
+}
+
+/* GGB iframe 始终占满内容区 */
+.post-content iframe {
+  width: 100% !important;
+}
