@@ -1,14 +1,14 @@
-baseURL = '/'
-# GitHub Actions 部署时通过 --baseURL 参数覆盖为实际域名
-# Cloudflare Pages 同理，构建时自动注入
-# 本地预览时 baseURL 为 '/' 确保链接不跳转到其他域名
 locale = 'zh-cn'
 defaultContentLanguage = 'zh'
 title = '数学与几何博客'
 theme = 'PaperMod'
 
-# canonifyURLs 保持关闭，避免 Hugo 将相对路径重写为绝对路径
-canonifyURLs = false
+# 1. baseURL 先保持为 github.io（不影响Cloudflare Pages）
+baseURL = 'https://xucg.github.io/'
+
+# 2. 关闭 URL 标准化、启用相对路径，适配 GitHub Pages + Cloudflare Pages 双域名
+canonifyURLs = false  # 禁止强制把所有链接转成绝对链接
+relativeURLs = true   # 让 Hugo 生成相对路径的链接，如 /posts/xxx/
 
 enableRobotsTXT = true
 buildDrafts = false
