@@ -84,7 +84,7 @@ D:=SYSFLODERS=\Desktop\xucg.github.io\static\ggb\gougu_dinli.html
 1.创建短代码文件（一次性创建即可，以后所有 GGB 都能用）
 
 在你的博客根目录下，新建文件 layouts/shortcodes/ggb.html（如果文件夹不存在就手动创建）：
-
+```
 <iframe 
     src="{{ .Get "src" }}"
     width="100%"
@@ -93,7 +93,7 @@ D:=SYSFLODERS=\Desktop\xucg.github.io\static\ggb\gougu_dinli.html
     allowfullscreen
     sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
 </iframe>
-
+```
 调用示例
 
 <!-- 使用默认高度 550 -->
