@@ -1,6 +1,6 @@
 ---
 title: "专题二 函数与方程"
-date: 2026-07-10
+date: 2026-07-21
 draft: false
 math: true
 tags: ["函数", "方程"]
