@@ -39,6 +39,21 @@
     max-height: 70vh;
 }
 
+/* 目录字体：小号宋体 */
+.post-single .toc {
+    font-family: 'SimSun', 'Songti SC', 'STSong', serif;
+    font-size: 15px;
+}
+
+.post-single .toc #TableOfContents ul {
+    list-style-type: none;
+    padding-left: 12px;
+}
+
+.post-single .toc #TableOfContents ul ul {
+    padding-left: 10px;
+}
+
 .post-single .toc .inner {
     margin: 5px;
     padding: 0;
