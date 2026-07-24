@@ -4,7 +4,7 @@ baseURL = '/'
 # 本地预览时 baseURL 为 '/' 确保链接不跳转到其他域名
 locale = 'zh-cn'
 defaultContentLanguage = 'zh'
-title = '数学与几何博客'
+title = '老徐数学博客'
 theme = 'PaperMod'
 
 # canonifyURLs 保持关闭，避免 Hugo 将相对路径重写为绝对路径
@@ -20,8 +20,8 @@ buildExpired = false
 
 [params]
   env = 'production'
-  title = '数学与几何博客'
-  description = '数学公式、几何演示与教学笔记'
+  title = '老徐数学博客'
+  description = '数学研究、几何演示与教学笔记'
   author = 'Me'
   defaultTheme = 'dark'
   ShowReadingTime = true
@@ -34,8 +34,8 @@ buildExpired = false
   math = true
 
 [params.homeInfoParams]
-  Title = '数学与几何博客'
-  Content = '记录数学公式、GeoGebra 演示与教学思考。'
+  Title = '老徐数学博客'
+  Content = '记录数学教学思考、GeoGebra 学习与研究。'
 
 [[menu.main]]
   identifier = 'posts'
