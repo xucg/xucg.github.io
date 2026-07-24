@@ -17,3 +17,25 @@
   border-radius: 10px;
   background: var(--entry);
 }
+
+/* 缩小首页标题区域空白 */
+.first-entry.home-info {
+  min-height: auto;
+  margin: var(--gap) 0;
+}
+
+.first-entry.home-info .entry-header h1 {
+  margin-bottom: 0.3em;
+}
+
+.first-entry.home-info .entry-content {
+  margin: 0;
+}
+
+.first-entry.home-info .entry-content p {
+  margin: 0.5em 0 0 0;
+}
+
+.first-entry.home-info .entry-footer {
+  margin-top: 0.5em;
+}

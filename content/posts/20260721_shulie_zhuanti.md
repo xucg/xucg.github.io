@@ -1,6 +1,6 @@
 ---
 title: "专题三 数列"
-date: 2026-07-21
+date: 2026-07-21T13:30:00+08:00
 draft: false
 math: true
 tags: ["数列"]
