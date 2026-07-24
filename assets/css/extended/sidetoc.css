@@ -1,0 +1,45 @@
+/* PaperMod 双栏布局：正文 + 侧边目录 */
+
+/* 窄屏保持单栏 */
+.post-single {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-column-gap: 20px;
+}
+
+/* 宽屏（≥1200px）变双栏：左边目录 + 右边正文 */
+@media (min-width: 1200px) {
+    .post-single {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    }
+
+    .post-single .toc {
+        grid-column: 1;
+        grid-row: 1;
+        position: sticky;
+        top: 10px;
+    }
+}
+
+.post-single .post-header { grid-column: 2; width: 100%; }
+.post-single .entry-cover { grid-column: 2; }
+.post-single .post-content { grid-column: 2; }
+.post-single .post-footer { grid-column: 2; }
+
+.post-single .toc {
+    height: fit-content;
+    grid-row: span 3;
+}
+
+/* 目录内部过长时滚动 */
+.post-single .toc #TableOfContents {
+    overflow-y: auto;
+    overflow-x: auto;
+    padding-left: 20px;
+    max-height: 70vh;
+}
+
+.post-single .toc .inner {
+    margin: 5px;
+    padding: 0;
+}
