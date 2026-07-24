@@ -39,3 +39,9 @@
 .first-entry.home-info .entry-footer {
   margin-top: 0.5em;
 }
+
+/* 左右各加宽约1cm */
+:root {
+  --main-width: 876px;   /* 原 720px，已加宽两次共约2cm */
+  --nav-width: 1176px;   /* 原 1024px，已加宽两次共约2cm */
+}

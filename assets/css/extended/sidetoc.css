@@ -7,26 +7,37 @@
     grid-column-gap: 20px;
 }
 
-/* 宽屏（≥1200px）变双栏：左边目录 + 右边正文 */
+/* 宽屏（≥1200px）：有目录时双栏，没目录时单栏居中 */
 @media (min-width: 1200px) {
-    .post-single {
+    .post-single:has(.toc) {
         grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
     }
 
-    .post-single .toc {
+    .post-single:has(.toc) .toc {
         grid-column: 1;
         grid-row: 1;
         position: sticky;
         top: 10px;
     }
+
+    .post-single:has(.toc) .post-header { grid-column: 2; width: 100%; }
+    .post-single:has(.toc) .entry-cover { grid-column: 2; }
+    .post-single:has(.toc) .post-content { grid-column: 2; }
+    .post-single:has(.toc) .post-footer { grid-column: 2; }
+
+    /* 没目录：单栏居中 */
+    .post-single:not(:has(.toc)) {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+    }
+
+    /* 文章页宽度使用导航栏宽度，左右留白与导航栏一致 */
+    .main:has(.post-single) {
+        max-width: calc(var(--nav-width) + var(--gap) * 2);
+    }
 }
 
-.post-single .post-header { grid-column: 2; width: 100%; }
-.post-single .entry-cover { grid-column: 2; }
-.post-single .post-content { grid-column: 2; }
-.post-single .post-footer { grid-column: 2; }
-
-.post-single .toc {
+.post-single:has(.toc) .toc {
     height: fit-content;
     grid-row: span 3;
 }
