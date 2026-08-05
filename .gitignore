@@ -1,0 +1,17 @@
+public/
+*.bak
+.hugo_build.lock
+themes/
+# 本地便携 Hugo（不进版本库，避免仓库/备份膨胀）
+hugo.exe
+tools/
+# Node 依赖（staticrypt 加密用，不进版本库）
+node_modules/
+# 本地密码文件（不进版本库）
+.protected-password
+# 临时验证构建目录（本地验证用，不进版本库）
+_out/
+_verify/
+_v2/
+_v3/
+_fin/

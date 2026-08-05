@@ -1,0 +1,18 @@
+disabled = false
+locale = 'zh-cn'
+label = '中文'
+weight = 1
+title = '老徐数学博客'
+
+[params]
+  displayName = '中'
+  isoCode = 'zh'
+  rtl = false
+  dateFormat = '2006年1月2日'
+  description = '数学研究、几何演示与教学笔记'
+  copyright = '© { year } 老徐数学博客'
+
+[params.author]
+  name = '老徐的数学博客'
+  headline = '记录数学教学思考、GeoGebra 学习与研究'
+  bio = '数学研究、GeoGebra 学习与研究。'

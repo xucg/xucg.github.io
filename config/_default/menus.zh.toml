@@ -1,0 +1,69 @@
+# -- Main Menu --
+
+[[main]]
+  identifier = 'tutorial'
+  name = '教程'
+  pageRef = 'categories/教程'
+  weight = 20
+
+[[main]]
+  identifier = 'math'
+  name = '数学专题'
+  pageRef = 'categories/数学专题'
+  weight = 10
+
+[[main]]
+  identifier = 'line'
+  name = '   '
+  pageRef = ''
+  weight = 25
+
+[[main]]
+  name = '文章'
+  pageRef = 'posts'
+  weight = 30
+
+[[main]]
+  name = '归档'
+  pageRef = 'archives'
+  weight = 40
+
+[[main]]
+  name = '私密'
+  pageRef = 'private'
+  weight = 50
+
+[[main]]
+  name = '标签'
+  pageRef = 'tags'
+  weight = 60
+
+# -- Sub Menu --
+
+[[main]]
+  identifier = 'func-eq'
+  name = '函数与方程'
+  pageRef = 'categories/函数与方程'
+  parent = 'math'
+  weight = 10
+
+[[main]]
+  identifier = 'seq'
+  name = '数列专题'
+  pageRef = 'categories/数列专题'
+  parent = 'math'
+  weight = 20
+
+[[main]]
+  identifier = 'post-tutorial'
+  name = '发文教程'
+  pageRef = 'categories/发文教程'
+  parent = 'tutorial'
+  weight = 10
+
+# -- Footer Menu --
+
+[[footer]]
+  name = '标签'
+  pageRef = 'tags'
+  weight = 10

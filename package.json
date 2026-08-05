@@ -1,0 +1,13 @@
+{
+  "name": "xucg.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "hugo --gc --minify && node encrypt-protected.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^30.0.1",
+    "katex": "^0.18.1",
+    "staticrypt": "^3.5.4"
+  }
+}

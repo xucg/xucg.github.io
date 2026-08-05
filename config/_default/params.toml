@@ -1,0 +1,61 @@
+# -- Theme Options --
+
+colorScheme = 'blowfish'
+defaultAppearance = 'dark'
+autoSwitchAppearance = true
+
+enableSearch = true
+enableCodeCopy = true
+
+mainSections = ['posts']
+
+[author]
+  name = '老徐的数学博客'
+  headline = '记录数学教学思考、GeoGebra 学习与研究'
+
+[header]
+  layout = 'basic'
+
+[footer]
+  startYear = 2026
+  showMenu = true
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = 'profile'
+  showRecent = true
+  showRecentItems = 5
+  showMoreLink = false
+  showMoreLinkDest = '/posts/'
+  cardView = false
+
+[article]
+  showDate = true
+  showAuthor = false
+  showBreadcrumbs = true
+  showHeadingAnchors = true
+  showPagination = true
+  showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = true
+  showWordCount = false
+
+[list]
+  showBreadcrumbs = true
+  showSummary = true
+  groupByYear = true
+  cardView = false
+
+[taxonomy]
+  showTermCount = true
+
+[term]
+  showBreadcrumbs = true
+
+# 父分类 -> 子分类 列表：文章只写子分类即可在父分类页列出（用于顶栏一级菜单聚合二级分类）
+[categoryHierarchy]
+  "数学专题" = ["函数与方程", "数列专题"]
+  "教程" = ["发文教程"]

@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="archive">
+  <header class="archive-header">
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+  </header>
+  <div class="archive-content mt-8">
+    {{ $pages := where .Site.RegularPages "Type" "posts" }}
+    {{ range $pages.GroupByDate "2006" }}
+      <h2 class="archive-year text-2xl font-bold text-neutral-700 dark:text-neutral-300 mb-3">{{ .Key }}</h2>
+      <ul class="archive-list mb-8 space-y-1">
+        {{ range .Pages }}
+          <li class="flex gap-3 items-baseline">
+            <time class="text-sm text-neutral-500 dark:text-neutral-400 tabular-nums" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
+            <a href="{{ .RelPermalink }}" class="link">{{ .Title }}</a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+  </div>
+</article>
+{{ end }}
