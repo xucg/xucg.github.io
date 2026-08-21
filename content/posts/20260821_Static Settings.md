@@ -16,8 +16,6 @@ categories: ["发文教程"]
 
 我的学习作业：
 
-{{< ggb src="/ggb/20260821_Static Settings.html?embed" >}}
+{{< ggb src="/ggb/20260821_Static Settings.html?embed"  height="1200" >}}
 
- {{< geogebra id="jvubkpea" width="100%" height="520" >}}
-
-  {{< geogebra id="jvubkpea" width="100%" height="1020" >}}
+  {{< geogebra id="jvubkpea" width="100%" height="1220" >}}
