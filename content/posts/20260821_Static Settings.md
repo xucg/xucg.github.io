@@ -2,7 +2,7 @@
 title: "GGB学习：1.静态设置"
 date: 2026-08-26T11:30:00+08:00
 draft: false
-tags: ["几何","勾股定理"]
+tags: ["GGB"]
 categories: ["发文教程"]
 ---
 
