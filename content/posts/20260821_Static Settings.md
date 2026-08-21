@@ -19,3 +19,5 @@ categories: ["发文教程"]
 {{< ggb src="/ggb/20260821_Static Settings.html?embed" >}}
 
  {{< geogebra id="jvubkpea" width="100%" height="520" >}}
+
+  {{< geogebra id="jvubkpea" width="100%" height="1020" >}}
