@@ -1,8 +1,8 @@
 ---
-title: "测试：GGB 自适应宽度与高度"
+title: "教程：GGB 自适应宽度与高度"
 date: 2026-08-21T18:30:00+08:00
 draft: false
-tags: ["GeoGebra","测试","自适应"]
+tags: ["GeoGebra"]
 categories: ["发文教程"]
 ---
 
