@@ -1,64 +1,78 @@
-{{- $height := .Get "height" | default "550" -}}
-{{- $width := .Get "width" | default "100%" -}}
-<div class="ggb-embed" style="width:100%;">
+{{- $height := .Get "height" | default "" -}}
+<div class="ggb-embed" style="width:100%;{{ if $height }}max-height:{{ $height }}px;overflow:hidden;{{ end }}">
   <iframe
     class="ggb-frame"
     src="{{ .Get "src" }}"
-    width="{{ $width }}"
-    height="{{ $height }}"
-    style="width:100%;max-width:100%;border:0;display:block;"
-    frameborder="0"
-    allowfullscreen
-    loading="lazy"
+    style="width:100%;border:0;display:block;"
     sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-    data-ggb
+    loading="lazy"
   ></iframe>
 </div>
 {{- if not ($.Page.Scratch.Get "ggbScript") -}}
 {{- $.Page.Scratch.Set "ggbScript" true -}}
 <script>
-(function () {
-  if (window.__ggbAutoResize) return;
-  window.__ggbAutoResize = true;
-  function resize(iframe) {
+(function(){
+  if (window.__ggbResize) return;
+  window.__ggbResize = true;
+
+  function setHeight(f){
     try {
-      var d = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document);
-      if (!d || !d.body) return;
-      var h = Math.max(
-        d.body.scrollHeight, d.documentElement.scrollHeight,
-        d.body.offsetHeight, d.documentElement.offsetHeight
-      );
-      if (h > 0) iframe.style.height = h + 'px';
-    } catch (e) { /* 跨域时无法读取，依赖 postMessage */ }
+      var doc = f.contentDocument;
+      if (!doc) return;
+      var el = doc.getElementById('ggbApplet');
+      var rectH = el ? el.getBoundingClientRect().height : 0;
+      var scrollH = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight);
+      var h = Math.max(rectH, scrollH);
+      if (h > 0) f.style.height = h + 'px';
+    } catch (e) {}
   }
-  function poll(iframe) {
-    resize(iframe);
-    [300, 1000, 2500].forEach(function (t) {
-      setTimeout(function () { resize(iframe); }, t);
-    });
+
+  function stripMargin(f){
+    var t = setInterval(function(){
+      try {
+        var doc = f.contentDocument;
+        if (doc && doc.body) {
+          doc.body.style.margin = '0';
+          doc.body.style.padding = '0';
+          clearInterval(t);
+        }
+      } catch (e) { clearInterval(t); }
+    }, 50);
   }
-  function init() {
-    document.querySelectorAll('iframe[data-ggb]').forEach(function (iframe) {
-      poll(iframe);
-      iframe.addEventListener('load', function () { poll(iframe); });
-    });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-  // GeoGebra 通过 postMessage 上报高度时自动应用
-  window.addEventListener('message', function (e) {
-    var msg = e.data;
-    if (!msg || (msg.type !== 'height' && msg.type !== 'ggb-height' && typeof msg.height !== 'number')) return;
-    var h = msg.height;
-    document.querySelectorAll('iframe[data-ggb]').forEach(function (iframe) {
-      if (e.source === (iframe.contentWindow || (iframe.contentDocument && iframe.contentDocument.defaultView))) {
-        iframe.style.height = h + 'px';
+
+  function observe(f){
+    try {
+      var doc = f.contentDocument;
+      if (doc && doc.body) {
+        doc.body.style.margin = '0';
+        doc.body.style.padding = '0';
+        var win = doc.defaultView;
+        if (win) win.dispatchEvent(new Event('resize'));
       }
-    });
-  });
+    } catch (e) {}
+    setHeight(f);
+    var t = setInterval(function(){ setHeight(f); }, 200);
+    // 10 秒后停止轮询，避免后台一直跑
+    setTimeout(function(){ clearInterval(t); }, 10000);
+  }
+
+  function initFrame(f){
+    if (f.dataset.ggbReady) return;
+    f.dataset.ggbReady = '1';
+    stripMargin(f);
+    if (f.contentDocument && f.contentDocument.readyState === 'complete') {
+      observe(f);
+    } else {
+      f.addEventListener('load', function(){ observe(f); });
+    }
+  }
+
+  function init(){
+    document.querySelectorAll('.ggb-frame').forEach(initFrame);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
 </script>
 {{- end -}}
