@@ -8,6 +8,18 @@ categories: ["发文教程"]
 
 本篇用来验证 `ggb` 短代码现在的表现：**宽度 100% 铺满**，且 **高度随内容自动测量自适应**（不再用固定值）。
 
+打开 static/ggb/20260821_Static Settings.html，找到第 37 行：
+
+
+
+"allowUpscale":false,
+
+改成：
+
+"allowUpscale":true,
+
+只改这一处，保存。
+
 ### 自适应高度（不写 height，由脚本自动测量）
 
 {{< ggb src="/ggb/20260821_Static Settings.html?embed" >}}
